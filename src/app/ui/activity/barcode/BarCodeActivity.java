@@ -36,6 +36,7 @@ public class BarCodeActivity extends Activity {
         qrImgImageView = (ImageView) this.findViewById(R.id.iv_qr_image);
         
         Button scanBarCodeButton = (Button) this.findViewById(R.id.btn_scan_barcode);
+        
         scanBarCodeButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
