@@ -17,7 +17,7 @@
  ******************************************************************************/
 package app.ui;
 
-import mobi.kuaidian.qunakao.R;
+import myclass.manager.R;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;

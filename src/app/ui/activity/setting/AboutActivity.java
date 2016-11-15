@@ -17,7 +17,7 @@
  ******************************************************************************/
 package app.ui.activity.setting;
 
-import mobi.kuaidian.qunakao.R;
+import myclass.manager.R;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;

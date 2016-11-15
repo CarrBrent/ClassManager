@@ -17,7 +17,8 @@
  ******************************************************************************/
 package app.ui.widget;
 
-import mobi.kuaidian.qunakao.R;
+import myclass.manager.R;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -29,6 +30,7 @@ import android.widget.LinearLayout;
  * @author Administrator
  *
  */
+@SuppressLint("NewApi")
 public class TabView extends LinearLayout implements OnClickListener {
 
     private OnTabChangeListener mOnTabChangedListener;

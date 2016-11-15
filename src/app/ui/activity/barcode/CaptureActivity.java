@@ -3,7 +3,7 @@ package app.ui.activity.barcode;
 import java.io.IOException;
 import java.util.Vector;
 
-import mobi.kuaidian.qunakao.R;
+import myclass.manager.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;

@@ -20,7 +20,7 @@
             android:id="@+id/layout_class1"
             android:layout_width="match_parent"
             android:layout_height="@dimen/row_height"
-            android:background="@drawable/row_selector"
+            android:background="@drawable/row_selector" 
             android:clickable="true"
             android:onClick="onClick"
             android:paddingLeft="@dimen/row_padding_left"

@@ -1,6 +1,6 @@
 package app.ui.fragment;
 
-import mobi.kuaidian.qunakao.R;
+import myclass.manager.R;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

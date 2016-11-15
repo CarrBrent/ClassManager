@@ -17,7 +17,7 @@
 package com.zxing.decoding;
 import java.util.Hashtable;
 
-import mobi.kuaidian.qunakao.R;
+import myclass.manager.R;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;

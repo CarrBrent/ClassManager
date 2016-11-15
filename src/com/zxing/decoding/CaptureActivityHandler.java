@@ -18,7 +18,7 @@ package com.zxing.decoding;
 
 import java.util.Vector;
 
-import mobi.kuaidian.qunakao.R;
+import myclass.manager.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;

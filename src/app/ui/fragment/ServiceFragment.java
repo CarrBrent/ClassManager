@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import mobi.kuaidian.qunakao.R;
+import myclass.manager.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import app.ui.BaseFragment;
 import app.ui.activity.barcode.BarCodeActivity;
 import app.ui.activity.myclass.MyClassActivity;
+import app.ui.activity.myclass.httptestActivity;
 import app.ui.activity.setting.AboutActivity;
 import app.ui.adapter.ViewPaperAdapter;
 
@@ -48,6 +49,9 @@ public class ServiceFragment extends BaseFragment implements Runnable{
 				break;
 			case R.id.layout_3:
 				startActivity(new Intent(getActivity(), MyClassActivity.class));
+				break;
+			case R.id.layout_4:
+				startActivity(new Intent(getActivity(), httptestActivity.class));
 				break;
 
 			default:

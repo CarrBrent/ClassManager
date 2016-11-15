@@ -1,9 +1,8 @@
 package app.ui.activity.barcode;
 
-import mobi.kuaidian.qunakao.R;
-
 import com.google.zxing.WriterException;
 
+import myclass.manager.R;
 import app.ui.activity.barcode.CaptureActivity;
 
 import com.zxing.encoding.EncodingHandler;

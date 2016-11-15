@@ -1,6 +1,6 @@
 package app.ui.activity.myclass;
 
-import mobi.kuaidian.qunakao.R;
+import myclass.manager.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
