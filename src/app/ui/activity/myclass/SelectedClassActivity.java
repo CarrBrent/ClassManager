@@ -26,7 +26,7 @@ public class SelectedClassActivity extends TitleActivity implements OnClickListe
     public void onClick(View v) {
         super.onClick(v);//实现父类的onClick方法这样才可使使左上角的返回按钮生效
         switch (v.getId()) {
-		case R.id.layout_class1:
+		case R.id.listview:
 			break;
 
 		default:
