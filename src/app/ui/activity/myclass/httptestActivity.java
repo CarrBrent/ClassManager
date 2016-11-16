@@ -1,111 +1,80 @@
 package app.ui.activity.myclass;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 
 import myclass.manager.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class httptestActivity extends Activity
 {
-    private Button mSendReqBtn = null;// 发送请求的按钮
-    private WebView mWebView = null;// 用于显示结果，用载入html字符串的方式显示响应结果，而不是使用WebView自己的方式加载URL
+	private Button mSendReqBtn = null;// 发送请求的按钮
+	private TextView text = null;// 用于显示结果，用载入html字符串的方式显示响应结果，而不是使用WebView自己的方式加载URL
 
-    // 响应
-    private HttpResponse mHttpResponse = null;
-    // 实体
-    private HttpEntity mHttpEntity = null;
+	HttpUtils http = new HttpUtils();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.httptest);
+	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.httptest);
 
-        mSendReqBtn = (Button) findViewById(R.id.submit);
-        mSendReqBtn.setOnClickListener(mSendClickListener);
+		mSendReqBtn = (Button) findViewById(R.id.submit);
+		text = (TextView) findViewById(R.id.textview);
+		mSendReqBtn.setOnClickListener(mSendClickListener);
 
-    }
+	}
 
-    private OnClickListener mSendClickListener = new OnClickListener()
-    {
 
-        @Override
-        public void onClick(View v)
-        {
-            // 生成一个请求对象
-            HttpGet httpGet = new HttpGet("http://219.216.65.200:8080/spring/helloworld.do");
-            // 生成一个Http客户端对象
-            HttpClient httpClient = new DefaultHttpClient();
+	private OnClickListener mSendClickListener = new OnClickListener()
+	{
 
-            // 下面使用Http客户端发送请求，并获取响应内容
+		@Override
+		public void onClick(View v)
+		{
+			RequestParams params = new RequestParams();
+			params.addQueryStringParameter("username", "jaishil");
 
-            InputStream inputStream = null;
-            try
-            {
-                // 发送请求并获得响应对象
-                mHttpResponse = httpClient.execute(httpGet);
-                // 获得响应的消息实体
-                mHttpEntity = mHttpResponse.getEntity();
+			http.send(HttpRequest.HttpMethod.GET,
+					"http://219.216.65.200:8080/spring/helloworld.do",
+					params,
+					new RequestCallBack<String>() {
 
-                // 获取一个输入流
-                inputStream = mHttpEntity.getContent();
+				@Override
+				public void onStart() {
+					text.setText("conn...");
+				}
 
-                BufferedReader bufferedReader = new BufferedReader(
-                        new InputStreamReader(inputStream));
+				@Override
+				public void onLoading(long total, long current, boolean isUploading) {
+					text.setText(current + "/" + total);
+				}
 
-                String result = "";
-                String line = "";
+				@Override
+				public void onSuccess(ResponseInfo<String> responseInfo) {
+					text.setText("response:" + responseInfo.result);
+				}
 
-                while (null != (line = bufferedReader.readLine()))
-                {
-                    result += line;
-                }
 
-                // 将结果打印出来，可以在LogCat查看
-                System.out.println(result);
+				@Override
+				public void onFailure(HttpException error, String msg) {
+					text.setText(msg);
+				}
+			});
 
-                // 将内容载入WebView显示
-                mWebView.getSettings().setDefaultTextEncodingName("UTF-8");
-                // 直接使用mWebView.loadData(result, "text/html", "utf-8");会显示找不到网页
+		}
+	};
 
-                // 换成下面的方式可以正常显示（但是比较宽，拖动可见百度logo）
-                mWebView.loadDataWithBaseURL(null, result, "text/html",
-                        "utf-8", null);
-                
-                // 直接载入URL也可以显示页面（但是此例子主要是为了验证响应返回的字符串是否正确，所以不用下面这行代码）
-                // mWebView.loadUrl("http://www.baidu.com/");
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-            finally
-            {
-                try
-                {
-                    inputStream.close();
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-    };
 
 }
