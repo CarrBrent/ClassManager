@@ -47,7 +47,7 @@ public class httptestActivity extends Activity
 			params.addQueryStringParameter("username", "jaishil");
 
 			http.send(HttpRequest.HttpMethod.GET,
-					"http://219.216.65.200:8080/spring/helloworld.do",
+					"http://219.216.64.170:8080/spring/helloworld.do",
 					params,
 					new RequestCallBack<String>() {
 
