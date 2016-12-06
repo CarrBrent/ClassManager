@@ -130,34 +130,6 @@
 
       
     </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.0" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:duplicateParentState="true"
-                android:gravity="center_horizontal"
-                android:text="@string/text_company"
-                android:textSize="10dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:duplicateParentState="true"
-                android:gravity="center_horizontal"
-                android:text="@string/text_copyright"
-                android:textSize="10dp" />
-        </LinearLayout>
-    </FrameLayout>
+  
 
 </LinearLayout>

@@ -13,12 +13,15 @@ public class SelectedClassActivity extends TitleActivity implements OnClickListe
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+    	
+    	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectedclass);
-        setTitle("课程选项");
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        String classString = bundle.getString("classname");
+        setTitle(classString);
         showBackwardView(R.string.button_backward, true);
-        
-        
         
         
     }
