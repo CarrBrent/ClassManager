@@ -53,43 +53,14 @@ public class MyClassActivity extends TitleActivity implements OnClickListener{
 		setTitle("我的课程");
 		showBackwardView(R.string.button_backward, true);//设置左上角返回箭头生效
 
-//				//通过访问服务器，获取数据
-//				RequestParams params = new RequestParams();
-//				params.addQueryStringParameter("username", "jaishil");
-//				final BaseInfo baseInfo = (BaseInfo)getApplication();
-//				listView=(ListView)this.findViewById(R.id.listview); 
-//				GetData(baseInfo.getUrl()+url, params);
-//				
-//				//为每个item设置监听器
-//				listView.setOnItemClickListener(new OnItemClickListener() {
-//		
-//					@Override
-//					public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-//							long arg3) {
-//						
-//						Map map = (Map)listView.getItemAtPosition(arg2);
-//		                String classname = (String) map.get("classname");
-//						Intent intent = new Intent();
-//						intent.setClass(MyClassActivity.this, SelectedClassActivity.class);
-//						Bundle bundle = new Bundle();
-//						bundle.putString("classname",classname);
-//						intent.putExtras(bundle);
-//						startActivity(intent);
-//					}
-//				});
+		//通过访问服务器，获取数据
+		RequestParams params = new RequestParams();
+		params.addQueryStringParameter("username", "jaishil");
+		final BaseInfo baseInfo = (BaseInfo)getApplication();
+		listView=(ListView)this.findViewById(R.id.listview); 
+		GetData(baseInfo.getUrl()+url, params);
 
-
-
-		String string= "{\"classes\":[{\"classname\":\"数据仓库\"},{\"classname\":\"机器学习\"},{\"classname\":\"数据结构\"},{\"classname\":\"软件重构技术\"}]}";
-		List<Map<String, Object>> myclass = getMaps("classes", string);
-
-
-		//将数据适配到相应的ListView
-		final SimpleAdapter adapter = new SimpleAdapter(this,myclass,R.layout.activity_myclass_items,
-				new String[]{"classname"},
-				new int[]{R.id.classname});
-		listView=(ListView)this.findViewById(R.id.listview);
-		listView.setAdapter(adapter);
+		//为每个item设置监听器
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -97,7 +68,7 @@ public class MyClassActivity extends TitleActivity implements OnClickListener{
 					int arg2, long arg3) {
 				// TODO Auto-generated method stub
 				Map map = (Map)listView.getItemAtPosition(arg2);
-                String classname = (String) map.get("classname");
+				String classname = (String) map.get("classname");
 				Intent intent = new Intent();
 				intent.setClass(MyClassActivity.this, SelectedClassActivity.class);
 				Bundle bundle = new Bundle();
@@ -109,6 +80,38 @@ public class MyClassActivity extends TitleActivity implements OnClickListener{
 			}
 
 		});
+
+
+
+//		String string= "{\"classes\":[{\"classname\":\"数据仓库\"},{\"classname\":\"机器学习\"},{\"classname\":\"数据结构\"},{\"classname\":\"软件重构技术\"}]}";
+//		List<Map<String, Object>> myclass = getMaps("classes", string);
+//
+//
+//		//将数据适配到相应的ListView
+//		final SimpleAdapter adapter = new SimpleAdapter(this,myclass,R.layout.activity_myclass_items,
+//				new String[]{"classname"},
+//				new int[]{R.id.classname});
+//		listView=(ListView)this.findViewById(R.id.listview);
+//		listView.setAdapter(adapter);
+//		listView.setOnItemClickListener(new OnItemClickListener() {
+//
+//			@Override
+//			public void onItemClick(AdapterView<?> arg0, View arg1,
+//					int arg2, long arg3) {
+//				// TODO Auto-generated method stub
+//				Map map = (Map)listView.getItemAtPosition(arg2);
+//				String classname = (String) map.get("classname");
+//				Intent intent = new Intent();
+//				intent.setClass(MyClassActivity.this, SelectedClassActivity.class);
+//				Bundle bundle = new Bundle();
+//				bundle.putString("classname",classname);
+//				intent.putExtras(bundle);
+//				startActivity(intent);
+//
+//
+//			}
+//
+//		});
 
 	}
 

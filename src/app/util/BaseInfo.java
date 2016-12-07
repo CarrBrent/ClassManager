@@ -13,7 +13,7 @@ public class BaseInfo extends Application{
     }  
     @Override  
     public void onCreate(){  
-        url = "http://219.216.64.170:8080/spring/";  
+        url = "http://219.216.65.200:8080/spring/";  
         super.onCreate();  
     }  
 }  
