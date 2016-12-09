@@ -47,7 +47,6 @@ public class MyClassActivity extends TitleActivity implements OnClickListener{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		System.out.println("onCreate");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_myclass);
 		setTitle("我的课程");

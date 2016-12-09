@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 import app.ui.TitleActivity;
 
 public class SelectedClassActivity extends TitleActivity implements OnClickListener{
@@ -29,7 +30,8 @@ public class SelectedClassActivity extends TitleActivity implements OnClickListe
     public void onClick(View v) {
         super.onClick(v);//实现父类的onClick方法这样才可使使左上角的返回按钮生效
         switch (v.getId()) {
-		case R.id.listview:
+		case R.id.layout_score:
+			Toast.makeText(getApplicationContext(), "我的成绩", 1).show();
 			break;
 
 		default:

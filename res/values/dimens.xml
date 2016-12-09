@@ -17,6 +17,10 @@
     <dimen name="row_padding">10dp</dimen>
     <dimen name="row_padding_left">10dp</dimen>
     <dimen name="row_padding_right">10dp</dimen>
+    
+    <dimen name="default_button_height">45dp</dimen>
+    <dimen name="default_edittext_height">45dp</dimen>
+    
 
     <dimen name="item_height">70dp</dimen>
 
