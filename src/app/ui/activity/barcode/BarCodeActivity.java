@@ -1,13 +1,19 @@
 package app.ui.activity.barcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.google.zxing.WriterException;
 
 import myclass.manager.R;
+import app.ui.TitleActivity;
 import app.ui.activity.barcode.CaptureActivity;
 
 import com.zxing.encoding.EncodingHandler;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -19,7 +25,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class BarCodeActivity extends Activity {
+public class BarCodeActivity extends TitleActivity {
     /** Called when the activity is first created. */
 	private TextView resultTextView;
 	private EditText qrStrEditText;
@@ -29,6 +35,8 @@ public class BarCodeActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.barcode);
+        setTitle("课程签到");
+		showBackwardView(R.string.button_backward, true);//设置左上角返回箭头生效
         
         resultTextView = (TextView) this.findViewById(R.id.tv_scan_result);
         qrStrEditText = (EditText) this.findViewById(R.id.et_qr_string);
@@ -52,7 +60,13 @@ public class BarCodeActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
-					String contentString = qrStrEditText.getText().toString();
+					//String contentString = qrStrEditText.getText().toString();
+					JSONObject jsonObject = new JSONObject();
+					jsonObject.put("SId","1111");
+					jsonObject.put("CId","2222");
+					jsonObject.put("CName","数据库原理");
+					
+ 					String contentString = jsonObject.toString();
 					if (!contentString.equals("")) {
 						//根据字符串生成二维码图片并显示在界面上，第二个参数为图片的大小（350*350）
 						Bitmap qrCodeBitmap = EncodingHandler.createQRCode(contentString, 350);
@@ -62,6 +76,9 @@ public class BarCodeActivity extends Activity {
 					}
 					
 				} catch (WriterException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

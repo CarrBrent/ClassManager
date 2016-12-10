@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import app.ui.BaseFragment;
+import app.ui.activity.barcode.BarCodeActivity;
 import app.ui.activity.myclass.MyClassActivity;
+import app.ui.activity.myclass.httptestActivity;
 import app.ui.activity.setting.AboutActivity;
 import app.ui.activity.setting.LoginActivity;
 
@@ -27,6 +29,12 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 		case R.id.layout_account:
 			startActivity(new Intent(getActivity(), LoginActivity.class));
 			break;
+		case R.id.layout_notification:
+			startActivity(new Intent(getActivity(), httptestActivity.class));
+			break;
+		case R.id.layout_privacy:
+			startActivity(new Intent(getActivity(), BarCodeActivity.class));
+			break;
 		default:
 			break;
 		}
@@ -43,6 +51,8 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 		super.onViewCreated(view, savedInstanceState);
 		view.findViewById(R.id.layout_about).setOnClickListener(this);
 		view.findViewById(R.id.layout_account).setOnClickListener(this);
+		view.findViewById(R.id.layout_notification).setOnClickListener(this);
+		view.findViewById(R.id.layout_privacy).setOnClickListener(this);
 	}
 
 }

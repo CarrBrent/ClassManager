@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Vector;
 
 import myclass.manager.R;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
@@ -15,12 +14,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.view.SurfaceHolder;
+import android.view.View;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.Toast;
+import app.ui.TitleActivity;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
@@ -32,7 +30,7 @@ import com.zxing.view.ViewfinderView;
  * Initial the camera
  * @author Ryan.Tang
  */
-public class CaptureActivity extends Activity implements Callback {
+public class CaptureActivity extends TitleActivity implements Callback {
 
 	private CaptureActivityHandler handler;
 	private ViewfinderView viewfinderView;
@@ -44,17 +42,17 @@ public class CaptureActivity extends Activity implements Callback {
 	private boolean playBeep;
 	private static final float BEEP_VOLUME = 0.10f;
 	private boolean vibrate;
-	private Button cancelScanButton;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.camera);
+		setTitle("扫描课程二维码");
+		showBackwardView(R.string.button_backward, true);//设置左上角返回箭头生效
 		//ViewUtil.addTopView(getApplicationContext(), this, R.string.scan_card);
 		CameraManager.init(getApplication());
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
-		cancelScanButton = (Button) this.findViewById(R.id.btn_cancel_scan);
 		hasSurface = false;
 		inactivityTimer = new InactivityTimer(this);
 	}
@@ -81,15 +79,12 @@ public class CaptureActivity extends Activity implements Callback {
 		initBeepSound();
 		vibrate = true;
 		
-		//退出扫描界面
-		cancelScanButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				CaptureActivity.this.finish();
-			}
-		});
 	}
+	@Override
+	protected void onBackward(View backwardView) {
+		super.onBackward(backwardView);
+	}
+
 
 	@Override
 	protected void onPause() {
@@ -118,7 +113,7 @@ public class CaptureActivity extends Activity implements Callback {
 		String resultString = result.getText();
 		//FIXME
 		if (resultString.equals("")) {
-			Toast.makeText(CaptureActivity.this, "Scan failed!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(CaptureActivity.this, "扫描失败！", Toast.LENGTH_SHORT).show();
 		}else {
 //			System.out.println("Result:"+resultString);
 			Intent resultIntent = new Intent();
