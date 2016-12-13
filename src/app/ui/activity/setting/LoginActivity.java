@@ -9,7 +9,10 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -32,7 +35,7 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 	private HttpUtils http = new HttpUtils();
 	// 声明控件对象
 	private EditText et_name, et_pass;
-	private Button mLoginButton,mLoginError,mRegister;  
+	private Button mLoginButton;  
 	int selectIndex=1;
 	int tempSelect=selectIndex;
 	boolean isReLogin=false;
@@ -89,11 +92,11 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 		et_pass.addTextChangedListener(password_watcher);
 
 		mLoginButton = (Button) findViewById(R.id.login);
-		mLoginError  = (Button) findViewById(R.id.login_error);
-		mRegister    = (Button) findViewById(R.id.register);
+//		mLoginError  = (Button) findViewById(R.id.login_error);
+//		mRegister    = (Button) findViewById(R.id.register);
 		mLoginButton.setOnClickListener(this);       
-		mLoginError.setOnClickListener(this);       
-		mRegister.setOnClickListener(this); 
+//		mLoginError.setOnClickListener(this);       
+//		mRegister.setOnClickListener(this); 
 	}
 	private void initWatcher() {
 		username_watcher = new TextWatcher() {
@@ -128,17 +131,17 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 		case R.id.login:  //登陆
 			login();
 			break;
-		case R.id.login_error: //无法登陆(忘记密码了吧)
-			//   Intent login_error_intent=new Intent();
-			//   login_error_intent.setClass(LoginActivity.this, ForgetCodeActivity.class);
-			//   startActivity(login_error_intent);
-			break;
-		case R.id.register:    //注册新的用户
-			//   Intent intent=new Intent();
-			//   intent.setClass(LoginActivity.this, ValidatePhoneNumActivity.class);
-			//   startActivity(intent);
-
-			break;
+//		case R.id.login_error: //无法登陆(忘记密码了吧)
+//			//   Intent login_error_intent=new Intent();
+//			//   login_error_intent.setClass(LoginActivity.this, ForgetCodeActivity.class);
+//			//   startActivity(login_error_intent);
+//			break;
+//		case R.id.register:    //注册新的用户
+//			//   Intent intent=new Intent();
+//			//   intent.setClass(LoginActivity.this, ValidatePhoneNumActivity.class);
+//			//   startActivity(intent);
+//
+//			break;
 		default://必须设置default，否则会和onBackward(View backwardView)冲突
 			break;
 		}
@@ -173,11 +176,18 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 			}
 
 			@Override
-			public void onSuccess(ResponseInfo<String> responseInfo) {	
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				
+				SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+				Editor editor = sharedPreferences.edit();//获取编辑器
+				editor.putString("userId", responseInfo.result);
+				editor.commit();//提交修改
 
 				Toast.makeText(getApplicationContext(), "登录成功", 1).show();
+				
+				
+				
 				finish();
-
 
 			}
 			@Override

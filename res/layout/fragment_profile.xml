@@ -22,7 +22,7 @@
             android:padding="@dimen/table_padding" >
 
             <RelativeLayout
-                android:id="@+id/layout_nickname"
+                android:id="@+id/layout_username"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/row_height"
                 android:layout_marginBottom="@dimen/row_margin"
@@ -39,21 +39,20 @@
                     android:drawablePadding="4dp"
                     android:duplicateParentState="true"
                     android:gravity="center_vertical"
-                    android:text="@string/text_username"/>
+                    android:text="@string/text_username" />
 
                 <TextView
-                    android:textColor="@color/gray"
-                    android:text="大冬瓜"
-                    android:id="@+id/tv_nickname"
+                    android:id="@+id/tv_username"
                     style="@style/text_18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/iv_nickname"
-                    android:paddingRight="@dimen/row_padding_right" />
+                    android:layout_toLeftOf="@+id/iv_username"
+                    android:paddingRight="@dimen/row_padding_right"
+                    android:textColor="@color/gray" />
 
                 <ImageView
-                    android:id="@+id/iv_nickname"
+                    android:id="@+id/iv_username"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
@@ -80,73 +79,31 @@
                     android:drawablePadding="4dp"
                     android:duplicateParentState="true"
                     android:gravity="center_vertical"
-                    android:text="@string/text_nickname"/>
+                    android:text="@string/text_gender" />
 
                 <TextView
-                    android:textColor="@color/gray"
-                    android:text="小白菜"
                     android:id="@+id/tv_gender"
                     style="@style/text_18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/iv_gender"
-                    android:paddingRight="@dimen/row_padding_right"/>
+                    android:paddingRight="@dimen/row_padding_right"
+                    android:text="男"
+                    android:textColor="@color/gray" />
 
                 <ImageView
-                   android:src="@drawable/go"
                     android:id="@+id/iv_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
                     android:duplicateParentState="true"
                     android:gravity="center_vertical"
-                    />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/layout_age"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/row_height"
-                android:layout_marginBottom="@dimen/row_margin"
-                android:background="@drawable/row_selector"
-                android:paddingLeft="@dimen/row_padding_left"
-                android:paddingRight="@dimen/row_padding_right" >
-
-                <TextView
-                    style="@style/text_black_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:drawableLeft="@drawable/ic_profile_age_normal"
-                    android:drawablePadding="4dp"
-                    android:duplicateParentState="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/text_gender" />
-
-                <TextView
-                     android:textColor="@color/gray"
-                    android:text="男"
-                    android:id="@+id/tv_age"
-                    style="@style/text_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/iv_age"
-                    android:paddingRight="@dimen/row_padding_right"/>
-
-                <ImageView
-                    android:id="@+id/iv_age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:duplicateParentState="true"
-                    android:gravity="center_vertical"
                     android:src="@drawable/go" />
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/layout_place"
+                android:id="@+id/layout_phone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/row_height"
                 android:layout_marginBottom="@dimen/row_margin"
@@ -155,90 +112,6 @@
                 android:paddingRight="@dimen/row_padding_right" >
 
                 <TextView
-                    style="@style/text_black_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:drawableLeft="@drawable/ic_profile_region_normal"
-                    android:drawablePadding="4dp"
-                    android:duplicateParentState="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/text_age"/>
-
-                <TextView
-                     android:textColor="@color/gray"
-                    android:text="90后"
-                    android:id="@+id/tv_place"
-                    style="@style/text_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/iv_place"
-                    android:paddingRight="@dimen/row_padding_right" />
-
-                <ImageView
-                    android:id="@+id/iv_place"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:duplicateParentState="true"
-                    android:gravity="center_vertical"
-                    android:src="@drawable/go" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/layout_health"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/row_height"
-                android:layout_marginBottom="@dimen/row_margin"
-                android:background="@drawable/row_selector"
-                android:paddingLeft="@dimen/row_padding_left"
-                android:paddingRight="@dimen/row_padding_right" >
-
-                <TextView
-                    style="@style/text_black_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:drawableLeft="@drawable/ic_profile_health_normal"
-                    android:drawablePadding="4dp"
-                    android:duplicateParentState="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/text_place"
-                    />
-
-                <TextView
-                     android:textColor="@color/gray"
-                    android:text="北京市"
-                    android:id="@+id/tv_health"
-                    style="@style/text_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/ImageView_health"
-                    android:paddingRight="@dimen/row_padding_right" />
-
-                <ImageView
-                    android:id="@+id/ImageView_health"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:duplicateParentState="true"
-                    android:gravity="center_vertical"
-                    android:src="@drawable/go" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_marginBottom="@dimen/row_margin"
-                android:id="@+id/layout_tags"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/row_selector"
-                android:paddingLeft="@dimen/row_padding_left"
-                android:paddingRight="@dimen/row_padding_right" >
-
-                <TextView
-                    android:id="@+id/text_tags"
                     style="@style/text_black_18"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -247,115 +120,20 @@
                     android:drawablePadding="4dp"
                     android:duplicateParentState="true"
                     android:gravity="center_vertical"
-                    android:text="@string/text_education"/>
+                    android:text="@string/text_phone" />
 
-                 <TextView
-                      android:textColor="@color/gray"
-                    android:text="大专"
-                    android:id="@+id/tv_tags"
+                <TextView
+                    android:id="@+id/tv_phone"
                     style="@style/text_18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/iv_tags"
-                    android:paddingRight="@dimen/row_padding_right" />
-                <ImageView
-                    android:id="@+id/iv_tags"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:duplicateParentState="true"
-                    android:gravity="center_vertical"
-                    android:src="@drawable/go" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_marginBottom="@dimen/row_margin"
-                android:id="@+id/layout_major"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/row_selector"
-                android:paddingLeft="@dimen/row_padding_left"
-                android:paddingRight="@dimen/row_padding_right" >
-
-                <TextView
-                    android:id="@+id/text_major"
-                    style="@style/text_black_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:drawableLeft="@drawable/ic_profile_tags_normal"
-                    android:drawablePadding="4dp"
-                    android:duplicateParentState="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/text_speciality" />
+                    android:layout_toLeftOf="@+id/iv_phone"
+                    android:paddingRight="@dimen/row_padding_right"
+                    android:textColor="@color/gray" />
 
                 <ImageView
-                    android:id="@+id/iv_major"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:duplicateParentState="true"
-                    android:gravity="center_vertical"
-                    android:src="@drawable/go" />
-
-                  <TextView
-                    android:textColor="@color/gray"
-                    android:text="计算机"
-                    android:id="@+id/tv_major"
-                    style="@style/text_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/iv_major"
-                    android:paddingRight="@dimen/row_padding_right" />
-            </RelativeLayout>
-
-           
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_TABLE1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/table_margin"
-            android:background="@color/table_background"
-            android:padding="@dimen/table_padding" >
-
-            <RelativeLayout
-                android:id="@+id/layout_credit"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/row_height"
-                android:background="@drawable/row_selector"
-                android:paddingLeft="@dimen/row_padding_left"
-                android:paddingRight="@dimen/row_padding_right" >
-
-                <TextView
-                    android:id="@+id/text_points_credit"
-                    style="@style/text_black_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:drawableLeft="@drawable/ic_profile_tags_normal"
-                    android:drawablePadding="4dp"
-                    android:duplicateParentState="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/text_credit"/>
-
-                <TextView
-                     android:textColor="@color/gray"
-                    android:text="890"
-                    android:id="@+id/tv_credit"
-                    style="@style/text_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/iv_icon"
-                    android:paddingRight="@dimen/row_padding_right"/>
-
-                <ImageView
-                    android:id="@+id/iv_icon"
+                    android:id="@+id/iv_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"

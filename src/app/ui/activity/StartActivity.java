@@ -2,7 +2,9 @@
 package app.ui.activity;
 
 import myclass.manager.R;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -10,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.widget.TextView;
 import app.ui.FragmentCallback;
+import app.ui.activity.setting.LoginActivity;
 import app.ui.fragment.ProfileFragment;
 import app.ui.fragment.ServiceFragment;
 import app.ui.fragment.SessionFragment;
@@ -97,53 +100,44 @@ public class StartActivity extends FragmentActivity implements OnTabChangeListen
      */
     @Override
     public void onTabChange(String tag) {
-
+    	//查看文件username 如果没有username的id则登录，否则显示个人的信息
+    	SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+    	String userId = sharedPreferences.getString("userId", "null");
 
         if (tag != null) {
-            if (tag.equals("message")) {
-                mPreviousTabIndex = mCurrentTabIndex;
-                mCurrentTabIndex = 0;
-                mTitleTextView.setText(R.string.text_tab_message);
-                replaceFragment(SessionFragment.class);
-                // 检查，如果没有登录则跳转到登录界面
-              /*  final UserConfigManager manager = UserConfigManager.getInstance();
-                if (manager.getId() <= 0) {
-                    startActivityForResult(new Intent(this, LoginActivity.class),
-                            BaseActivity.REQUEST_OK_LOGIN);
-                }*/
-            }else if ("service".equals(tag)) {
+           if ("service".equals(tag)) {
                 mPreviousTabIndex = mCurrentTabIndex;
                 mCurrentTabIndex = 1;
                 mTitleTextView.setText(R.string.text_tab_service);
+                //如果没有登录，则进入登录界面
+                if (userId.equals("null")) {
+        			startActivity(new Intent(this, LoginActivity.class));
+        		}
                 replaceFragment(ServiceFragment.class);
             } else if (tag.equals("personal")) {
                 mPreviousTabIndex = mCurrentTabIndex;
                 mCurrentTabIndex = 2;
                 mTitleTextView.setText(R.string.text_tab_profile);
+                //如果没有登录，则进入登录界面
+                if (userId.equals("null")) {
+        			startActivity(new Intent(this, LoginActivity.class));
+        		}
                 replaceFragment(ProfileFragment.class);
-                // 检查，如果没有登录则跳转到登录界面
-              /*  final UserConfigManager manager = UserConfigManager.getInstance();
-                if (manager.getId() <= 0) {
-                    startActivityForResult(new Intent(this, LoginActivity.class),
-                            BaseActivity.REQUEST_OK_LOGIN);
-                }*/
             } else if (tag.equals("settings")) {
                 mPreviousTabIndex = mCurrentTabIndex;
                 mCurrentTabIndex = 3;
                 mTitleTextView.setText(R.string.text_tab_setting);
+                //如果没有登录，则进入登录界面
+                if (userId.equals("null")) {
+        			startActivity(new Intent(this, LoginActivity.class));
+        		}
                 replaceFragment(SettingFragment.class);
-                // 检查，如果没有登录则跳转到登录界面
-               /* final UserConfigManager manager = UserConfigManager.getInstance();
-                if (manager.getId() <= 0) {
-                    startActivityForResult(new Intent(this, LoginActivity.class),
-                            BaseActivity.REQUEST_OK_LOGIN);
-                }*/
             }
         }
     }
 
     private void replaceFragment(Class<? extends Fragment> newFragment) {
-
+    	
         mCurrentFragment = FragmentUtils.switchFragment(mFragmentManager,
                 R.id.layout_content, mCurrentFragment,
                 newFragment, null, false);

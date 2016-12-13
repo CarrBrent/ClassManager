@@ -1,5 +1,5 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android" >
-
+<!-- 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +19,7 @@
             android:textColor="@color/text_service_color"
             android:textSize="14dp" />
     </FrameLayout>
-
+ -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

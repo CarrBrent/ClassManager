@@ -1,12 +1,16 @@
 package app.ui.fragment;
 
 import myclass.manager.R;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import app.ui.BaseFragment;
 import app.ui.activity.barcode.BarCodeActivity;
 import app.ui.activity.myclass.MyClassActivity;
@@ -35,6 +39,15 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 		case R.id.layout_privacy:
 			startActivity(new Intent(getActivity(), BarCodeActivity.class));
 			break;
+		case R.id.layout_exit:
+			SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
+			Editor editor = sharedPreferences.edit();//获取编辑器
+			editor.remove("userId");
+//			editor.putString("userId","null");
+			editor.commit();//提交修改
+
+			Toast.makeText(this.getActivity().getApplicationContext(), "已退出登录", 1).show();
+			break;
 		default:
 			break;
 		}
@@ -53,6 +66,7 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 		view.findViewById(R.id.layout_account).setOnClickListener(this);
 		view.findViewById(R.id.layout_notification).setOnClickListener(this);
 		view.findViewById(R.id.layout_privacy).setOnClickListener(this);
+		view.findViewById(R.id.layout_exit).setOnClickListener(this);
 	}
 
 }

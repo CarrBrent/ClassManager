@@ -19,6 +19,8 @@
     <string name="text_username">用户名</string>
     <string name="text_nickname">昵称</string>
     <string name="text_place">地区</string>
+    <string name="text_phone">电话</string>
+    <string name="text_login">登录</string>
     <string name="text_learning">我想学/考</string>
     <string name="text_education">学历层次</string>
     <string name="text_speciality">专业</string>

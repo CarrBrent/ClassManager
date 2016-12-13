@@ -37,7 +37,7 @@ public class TabView extends LinearLayout implements OnClickListener {
 
     private int mState = 0;
 
-    private final Button mStateButton1;
+//    private final Button mStateButton1;
     private final Button mStateButton2;
     private final Button mStateButton3;
     private final Button mStateButton4;
@@ -58,12 +58,12 @@ public class TabView extends LinearLayout implements OnClickListener {
     public TabView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         inflate(context, R.layout.view_tab, this);
-        mStateButton1 = (Button) findViewById(R.id.button_state1);
+//        mStateButton1 = (Button) findViewById(R.id.button_state1);
         mStateButton2 = (Button) findViewById(R.id.button_state2);
         mStateButton3 = (Button) findViewById(R.id.button_state3);
         mStateButton4 = (Button) findViewById(R.id.button_state4);
 
-        mStateButton1.setOnClickListener(this);
+//        mStateButton1.setOnClickListener(this);
         mStateButton2.setOnClickListener(this);
         mStateButton3.setOnClickListener(this);
         mStateButton4.setOnClickListener(this);
@@ -83,7 +83,7 @@ public class TabView extends LinearLayout implements OnClickListener {
         } // else continue
 
         mState = state;
-        mStateButton1.setSelected(false);
+//        mStateButton1.setSelected(false);
         mStateButton2.setSelected(false);
         mStateButton3.setSelected(false);
         mStateButton4.setSelected(false);
@@ -91,10 +91,10 @@ public class TabView extends LinearLayout implements OnClickListener {
         Object tag = null;
 
         switch (mState) {
-            case 0:
-                mStateButton1.setSelected(true);
-                tag = mStateButton1.getTag();
-                break;
+//            case 0:
+//                mStateButton1.setSelected(true);
+//                tag = mStateButton1.getTag();
+//                break;
 
             case 1:
                 mStateButton2.setSelected(true);
@@ -133,9 +133,9 @@ public class TabView extends LinearLayout implements OnClickListener {
 
         // TODO Auto-generated method stub
         switch (v.getId()) {
-            case R.id.button_state1:
-                switchState(0);
-                break;
+//            case R.id.button_state1:
+//                switchState(0);
+//                break;
 
             case R.id.button_state2:
                 switchState(1);
