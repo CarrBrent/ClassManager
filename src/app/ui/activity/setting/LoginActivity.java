@@ -1,5 +1,8 @@
 package app.ui.activity.setting;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import myclass.manager.R;
 
 import com.lidroid.xutils.HttpUtils;
@@ -31,7 +34,7 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
-	private String url = "login.do";
+	private String url = "stuLogin.do";
 	private HttpUtils http = new HttpUtils();
 	// 声明控件对象
 	private EditText et_name, et_pass;
@@ -158,8 +161,8 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 		String name = et_name.getText().toString();
 		String password = et_pass.getText().toString();
 		RequestParams params = new RequestParams();
-		params.addQueryStringParameter("SAccount",name);
-		params.addQueryStringParameter("SPwd",password);
+		params.addQueryStringParameter("saccount",name);
+		params.addQueryStringParameter("spwd",password);
 		final BaseInfo baseInfo = (BaseInfo)getApplication();
 
 		http.send(HttpRequest.HttpMethod.GET,
@@ -177,17 +180,26 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-				
-				SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
-				Editor editor = sharedPreferences.edit();//获取编辑器
-				editor.putString("userId", responseInfo.result);
-				editor.commit();//提交修改
-
-				Toast.makeText(getApplicationContext(), "登录成功", 1).show();
-				
-				
-				
-				finish();
+				JSONObject jsonObject;
+				try {
+					
+					jsonObject = new JSONObject(responseInfo.result);
+					
+					String sid=((Integer)jsonObject.get("sid")).toString();
+					if (sid.equals("-1")) {
+						Toast.makeText(getApplicationContext(), "用户名或密码错误", 1).show();
+					}else {
+						SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+						Editor editor = sharedPreferences.edit();//获取编辑器
+						editor.putString("userId",sid);
+						editor.commit();//提交修改
+						finish();
+					}
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 			}
 			@Override

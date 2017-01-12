@@ -18,19 +18,24 @@ import myclass.manager.R;
 import app.ui.TitleActivity;
 import app.ui.activity.barcode.CaptureActivity;
 import app.ui.activity.myclass.MyClassActivity;
+import app.ui.activity.myclass.SelectedClassActivity;
 import app.util.BaseInfo;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SignInActivity extends TitleActivity {
     /** Called when the activity is first created. */
 	private TextView resultTextView;
-	private String url = "signin.do";
+	private String url = "stuSignIn.do";
 	private HttpUtils http = new HttpUtils();
 	
     @Override
@@ -40,6 +45,7 @@ public class SignInActivity extends TitleActivity {
         setTitle("课程签到");
 		showBackwardView(R.string.button_backward, true);//设置左上角返回箭头生效
         
+		http.configCurrentHttpCacheExpiry(1000);
         resultTextView = (TextView) this.findViewById(R.id.tv_scan_result);
         
         Button scanBarCodeButton = (Button) this.findViewById(R.id.btn_scan_barcode);
@@ -65,21 +71,23 @@ public class SignInActivity extends TitleActivity {
 		if (resultCode == RESULT_OK) {
 			Bundle bundle = data.getExtras();
 			JSONObject jsonObject;
-			String CId = null;
-			String SId = null;
+			String seId = null;
+			String cId = null;
 			try {
 				jsonObject = new JSONObject(bundle.getString("result"));
-				CId = jsonObject.getString("CId");
-				SId = jsonObject.getString("SId");
+				seId = jsonObject.getString("seId");
+				cId = jsonObject.getString("cId");
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+	    	String userId = sharedPreferences.getString("userId", "null");
 			//通过访问服务器，获取数据
 			RequestParams params = new RequestParams();
-			params.addQueryStringParameter("CId",CId);
-			params.addQueryStringParameter("SId",SId);
+			params.addQueryStringParameter("cid",cId);
+			params.addQueryStringParameter("seid",seId);
+			params.addQueryStringParameter("sid",userId);
 			final BaseInfo baseInfo = (BaseInfo)getApplication();
 			http.send(HttpRequest.HttpMethod.GET,
 					baseInfo.getUrl()+url,
@@ -95,8 +103,25 @@ public class SignInActivity extends TitleActivity {
 				}
 
 				@Override
-				public void onSuccess(ResponseInfo<String> responseInfo) {				
-					resultTextView.setText("签到成功");
+				public void onSuccess(ResponseInfo<String> responseInfo) {
+					JSONObject jsonObject;
+					try {
+						
+						jsonObject = new JSONObject(responseInfo.result);
+						
+						String flag=((Integer)jsonObject.get("flag")).toString();
+						if (flag.equals("-1")) {
+							resultTextView.setText("签到失败");
+						}else {
+							resultTextView.setText("签到成功");
+						}
+						
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					
 				}
 				@Override
 				public void onFailure(HttpException error, String msg) {
