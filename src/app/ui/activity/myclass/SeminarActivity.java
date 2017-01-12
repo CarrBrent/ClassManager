@@ -7,10 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-
-
-
 import org.json.JSONObject;
 
 import com.lidroid.xutils.HttpUtils;
@@ -28,39 +24,40 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 import app.ui.TitleActivity;
 import app.ui.activity.setting.AboutActivity;
 import app.util.BaseInfo;
 
-public class MyClassActivity extends TitleActivity implements OnClickListener{
+public class SeminarActivity extends TitleActivity implements OnClickListener{
 	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
-
+     * @see android.app.Activity#onCreate(android.os.Bundle)
+     */
 	private ListView listView;
-
-
-	private String url = "stuListCourse.do";
+	private String url = "stuListMySeminar.do";
 	private HttpUtils http = new HttpUtils();
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_myclass);
-		setTitle("我的课程");
-		showBackwardView(R.string.button_backward, true);//设置左上角返回箭头生效
-		//查看文件teacher 查看用户id
-		SharedPreferences sharedPreferences = this.getSharedPreferences("user", Context.MODE_PRIVATE);
-		String sId = sharedPreferences.getString("userId", "0");
-
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_seminar);
+        
+        showBackwardView(R.string.button_backward, true);
+        SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+    	String sId = sharedPreferences.getString("userId", "null");
+    	
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        String cId = Integer.toString(bundle.getInt("cId"));
+        String cName = bundle.getString("cName");
+        setTitle(cName);
 		//通过访问服务器，获取数据
 		RequestParams params = new RequestParams();
-		params.addQueryStringParameter("sid", sId);
+		params.addQueryStringParameter("cid",cId);
+		params.addQueryStringParameter("sid",sId);
 		final BaseInfo baseInfo = (BaseInfo)getApplication();
+		
 		listView=(ListView)this.findViewById(R.id.listview); 
 		GetData(baseInfo.getUrl()+url, params);
 
@@ -72,31 +69,29 @@ public class MyClassActivity extends TitleActivity implements OnClickListener{
 					int arg2, long arg3) {
 				// TODO Auto-generated method stub
 				Map map = (Map)listView.getItemAtPosition(arg2);
-				int cid = (Integer)map.get("cid");
-				String cname = (String)map.get("cname");
+				int seId = (Integer) map.get("seId");
+				String seName = (String) map.get("seName");
 				Intent intent = new Intent();
-				intent.setClass(MyClassActivity.this, MyClassDetailActivity.class);
+				intent.setClass(SeminarActivity.this, AboutActivity.class);
 				Bundle bundle = new Bundle();
-				bundle.putInt("cId",cid);
-				bundle.putString("cName",cname);
+				bundle.putInt("seId",seId);
+				bundle.putString("seName",seName);
 				intent.putExtras(bundle);
 				startActivity(intent);
 
 			}
 
 		});
-
-
-
-
-	}
-
-	@Override
-	protected void onBackward(View backwardView) {
-		super.onBackward(backwardView);
-	}
-
-	private void GetData(String URL, RequestParams params){
+        
+        
+    }
+       
+    
+    @Override
+    protected void onBackward(View backwardView) {
+        super.onBackward(backwardView);
+    }
+    private void GetData(String URL, RequestParams params){
 		http.send(HttpRequest.HttpMethod.GET,
 				URL,
 				params,
@@ -112,11 +107,11 @@ public class MyClassActivity extends TitleActivity implements OnClickListener{
 
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {				
-				List<Map<String, Object>> myclass = getMaps("courses", responseInfo.result);
+				List<Map<String, Object>> seminars = getMaps("seminars", responseInfo.result);
 
-				SimpleAdapter adapter = new SimpleAdapter(MyClassActivity.this,myclass,R.layout.activity_myclass_items,
-						new String[]{"cname"},
-						new int[]{R.id.CName});
+				SimpleAdapter adapter = new SimpleAdapter(SeminarActivity.this,seminars,R.layout.activity_seminar_items,
+						new String[]{"seName"},
+						new int[]{R.id.SeName});
 				listView.setAdapter(adapter);
 			}
 			@Override
@@ -125,9 +120,6 @@ public class MyClassActivity extends TitleActivity implements OnClickListener{
 		});
 
 	}
-
-
-
 	public static List<Map<String, Object>> getMaps(String key,  
 			String jsonString) {  
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();  
@@ -157,7 +149,5 @@ public class MyClassActivity extends TitleActivity implements OnClickListener{
 		}  
 		return list;  
 	}  
-
-
 
 }
