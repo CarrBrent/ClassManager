@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import app.ui.TitleActivity;
 import app.ui.activity.barcode.SignInActivity;
+import app.ui.activity.evaluate.EvaluateActivity;
 import app.ui.activity.setting.AboutActivity;
 
 public class SeminarDetailActivity extends TitleActivity implements OnClickListener{
@@ -77,7 +78,7 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
 			break;
 		case R.id.layout_3:
 			Intent evaluateintent = new Intent();
-			evaluateintent.setClass(SeminarDetailActivity.this, AboutActivity.class);
+			evaluateintent.setClass(SeminarDetailActivity.this, EvaluateActivity.class);
 			Bundle evaluatebundle = new Bundle();
 			evaluatebundle.putInt("seId",seId);
 			evaluatebundle.putInt("cId",cId);

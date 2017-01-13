@@ -62,6 +62,17 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
+        <!-- 课堂评价-->
+        <activity
+            android:name="app.ui.activity.evaluate.EvaluateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="app.ui.activity.evaluate.SelfEvaluateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
 
         <!-- 我的课程相关 -->
         <activity
