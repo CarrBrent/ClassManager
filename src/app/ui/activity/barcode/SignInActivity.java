@@ -19,6 +19,8 @@ import app.ui.TitleActivity;
 import app.ui.activity.barcode.CaptureActivity;
 import app.ui.activity.myclass.MyClassActivity;
 import app.ui.activity.myclass.SelectedClassActivity;
+import app.ui.activity.myclass.SeminarActivity;
+import app.ui.activity.myclass.SeminarDetailActivity;
 import app.util.BaseInfo;
 import android.content.Context;
 import android.content.Intent;
@@ -37,6 +39,9 @@ public class SignInActivity extends TitleActivity {
 	private TextView resultTextView;
 	private String url = "stuSignIn.do";
 	private HttpUtils http = new HttpUtils();
+	private String seId = null;
+	private String seName = null;
+	private String cId = null;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,11 +76,10 @@ public class SignInActivity extends TitleActivity {
 		if (resultCode == RESULT_OK) {
 			Bundle bundle = data.getExtras();
 			JSONObject jsonObject;
-			String seId = null;
-			String cId = null;
 			try {
 				jsonObject = new JSONObject(bundle.getString("result"));
 				seId = jsonObject.getString("seId");
+				seName = jsonObject.getString("seName");
 				cId = jsonObject.getString("cId");
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -113,6 +117,13 @@ public class SignInActivity extends TitleActivity {
 						if (flag.equals("-1")) {
 							resultTextView.setText("签到失败");
 						}else {
+							Intent intent = new Intent();
+							intent.setClass(SignInActivity.this, SeminarDetailActivity.class);
+							Bundle bundle = new Bundle();
+							bundle.putInt("seId",Integer.parseInt(seId));
+							bundle.putString("seName",seName);
+							intent.putExtras(bundle);
+							startActivity(intent);
 							resultTextView.setText("签到成功");
 						}
 						

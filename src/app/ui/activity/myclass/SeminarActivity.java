@@ -6,17 +6,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import myclass.manager.R;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.exception.HttpException;
-import com.lidroid.xutils.http.RequestParams;
-import com.lidroid.xutils.http.ResponseInfo;
-import com.lidroid.xutils.http.callback.RequestCallBack;
-import com.lidroid.xutils.http.client.HttpRequest;
-
-import myclass.manager.R;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,12 +18,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.AdapterView.OnItemClickListener;
 import app.ui.TitleActivity;
-import app.ui.activity.setting.AboutActivity;
 import app.util.BaseInfo;
+
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 
 public class SeminarActivity extends TitleActivity implements OnClickListener{
 	/* (non-Javadoc)
@@ -72,7 +72,7 @@ public class SeminarActivity extends TitleActivity implements OnClickListener{
 				int seId = (Integer) map.get("seId");
 				String seName = (String) map.get("seName");
 				Intent intent = new Intent();
-				intent.setClass(SeminarActivity.this, AboutActivity.class);
+				intent.setClass(SeminarActivity.this, SeminarDetailActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putInt("seId",seId);
 				bundle.putString("seName",seName);
