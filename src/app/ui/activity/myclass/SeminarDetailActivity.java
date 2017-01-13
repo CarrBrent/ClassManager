@@ -56,7 +56,7 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
 			break;
 		case R.id.layout_1:
 			Intent groupingintent = new Intent();
-			groupingintent.setClass(SeminarDetailActivity.this, AboutActivity.class);
+			groupingintent.setClass(SeminarDetailActivity.this, GroupingActivity.class);
 			Bundle groupingbundle = new Bundle();
 			
 			groupingbundle.putInt("seId",seId);

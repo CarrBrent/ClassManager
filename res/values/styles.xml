@@ -4,6 +4,10 @@
         <item name="android:textSize">18dp</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
+    <style name="text_white_18">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
     <style name="text_black_20">
         <item name="android:textSize">20dp</item>
