@@ -33,31 +33,34 @@ import com.lidroid.xutils.http.client.HttpRequest;
 
 public class SeminarActivity extends TitleActivity implements OnClickListener{
 	/* (non-Javadoc)
-     * @see android.app.Activity#onCreate(android.os.Bundle)
-     */
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	private ListView listView;
 	private String url = "stuListMySeminar.do";
 	private HttpUtils http = new HttpUtils();
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seminar);
-        
-        showBackwardView(R.string.button_backward, true);
-        SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
-    	String sId = sharedPreferences.getString("userId", "null");
-    	
-        Intent intent = this.getIntent();
-        Bundle bundle = intent.getExtras();
-        String cId = Integer.toString(bundle.getInt("cId"));
-        String cName = bundle.getString("cName");
-        setTitle(cName);
+
+	private String cId;
+	private String cName;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_seminar);
+
+		showBackwardView(R.string.button_backward, true);
+		SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+		String sId = sharedPreferences.getString("userId", "null");
+
+		Intent intent = this.getIntent();
+		Bundle bundle = intent.getExtras();
+		cId = Integer.toString(bundle.getInt("cId"));
+		cName = bundle.getString("cName");
+		setTitle(cName);
 		//通过访问服务器，获取数据
 		RequestParams params = new RequestParams();
 		params.addQueryStringParameter("cid",cId);
 		params.addQueryStringParameter("sid",sId);
 		final BaseInfo baseInfo = (BaseInfo)getApplication();
-		
+
 		listView=(ListView)this.findViewById(R.id.listview); 
 		GetData(baseInfo.getUrl()+url, params);
 
@@ -75,6 +78,7 @@ public class SeminarActivity extends TitleActivity implements OnClickListener{
 				intent.setClass(SeminarActivity.this, SeminarDetailActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putInt("seId",seId);
+				bundle.putInt("cId",Integer.parseInt(cId));
 				bundle.putString("seName",seName);
 				intent.putExtras(bundle);
 				startActivity(intent);
@@ -82,16 +86,16 @@ public class SeminarActivity extends TitleActivity implements OnClickListener{
 			}
 
 		});
-        
-        
-    }
-       
-    
-    @Override
-    protected void onBackward(View backwardView) {
-        super.onBackward(backwardView);
-    }
-    private void GetData(String URL, RequestParams params){
+
+
+	}
+
+
+	@Override
+	protected void onBackward(View backwardView) {
+		super.onBackward(backwardView);
+	}
+	private void GetData(String URL, RequestParams params){
 		http.send(HttpRequest.HttpMethod.GET,
 				URL,
 				params,

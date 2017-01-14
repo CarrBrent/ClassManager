@@ -10,6 +10,7 @@ import java.util.Map;
 
 
 
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,6 +33,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import app.bean.Evaluation;
 import app.ui.TitleActivity;
+import app.ui.activity.barcode.SignInActivity;
+import app.ui.activity.myclass.SeminarDetailActivity;
 import app.util.BaseInfo;
 
 public class SelfEvaluateActivity extends TitleActivity implements OnClickListener{
@@ -157,7 +160,7 @@ public class SelfEvaluateActivity extends TitleActivity implements OnClickListen
 
 		}
 
-		params.addQueryStringParameter("evaluations",listToJson(evaluations));
+		params.addQueryStringParameter("selfevaluations",listToJson(evaluations));
 
 		http.send(HttpRequest.HttpMethod.GET,
 				selfevaluatesubmiturl,
@@ -172,8 +175,23 @@ public class SelfEvaluateActivity extends TitleActivity implements OnClickListen
 			}
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-				Toast.makeText(SelfEvaluateActivity.this, "评价完成", 1).show();
-				finish();
+				JSONObject jsonObject;
+				try {
+					
+					jsonObject = new JSONObject(responseInfo.result);
+					
+					String flag=((Integer)jsonObject.get("flag")).toString();
+					if (flag.equals("-1")) {
+						Toast.makeText(SelfEvaluateActivity.this, "评价失败", 1).show();
+					}else {
+						Toast.makeText(SelfEvaluateActivity.this, "评价完成", 1).show();
+						finish();
+					}
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			@Override
 			public void onFailure(HttpException error, String msg) {
@@ -188,13 +206,13 @@ public class SelfEvaluateActivity extends TitleActivity implements OnClickListen
 		JSONObject jsonObject = new JSONObject();
 		for(Evaluation evaluation : evaluations){
 			JSONObject jo = new JSONObject();
-			jo.put("seId", evaluation.getSeId());
-			jo.put("eeId", evaluation.getEeId());
-			jo.put("sId", evaluation.getsId());
+			jo.put("seid", evaluation.getSeId());
+			jo.put("eeid", evaluation.getEeId());
+			jo.put("object", evaluation.getObject());
 			jo.put("evalRank", evaluation.getEvalRank());
 			json.put(jo);
 		}
-		jsonObject.put("evaluations", json);
+		jsonObject.put("selfevaluations", json);
 		return jsonObject.toString();
 	}
 	

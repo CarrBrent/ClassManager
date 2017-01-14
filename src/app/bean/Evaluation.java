@@ -2,27 +2,30 @@ package app.bean;
 
 public class Evaluation {
 	int seId;
-	int sId;
+	int object;//student ID
 	int eeId;
 	String evalRank;
 	public Evaluation(int seId,int sId,int eeId,String evalRank){
 		this.setEeId(eeId);
 		this.setSeId(seId);
-		this.setsId(sId);
+		this.setObject(sId);
 		this.setEvalRank(evalRank);
 		
 	}
+	
+	public int getObject() {
+		return object;
+	}
+
+	public void setObject(int object) {
+		this.object = object;
+	}
+
 	public int getSeId() {
 		return seId;
 	}
 	public void setSeId(int seId) {
 		this.seId = seId;
-	}
-	public int getsId() {
-		return sId;
-	}
-	public void setsId(int sId) {
-		this.sId = sId;
 	}
 	public int getEeId() {
 		return eeId;
