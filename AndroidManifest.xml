@@ -62,6 +62,17 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
+        <!-- 练习题相关 -->
+        <activity
+            android:name="app.ui.activity.exercises.ExerciseActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="app.ui.activity.exercises.ExerciseRushActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
         <!-- 课堂评价-->
         <activity
             android:name="app.ui.activity.evaluate.EvaluateActivity"
