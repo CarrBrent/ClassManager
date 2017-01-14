@@ -10,6 +10,7 @@ import app.ui.TitleActivity;
 import app.ui.activity.barcode.SignInActivity;
 import app.ui.activity.evaluate.EvaluateActivity;
 import app.ui.activity.exercises.ExerciseActivity;
+import app.ui.activity.score.ScoreActivity;
 import app.ui.activity.setting.AboutActivity;
 
 public class SeminarDetailActivity extends TitleActivity implements OnClickListener{
@@ -86,6 +87,16 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
 			evaluatebundle.putString("seName",seName);
 			evaluateintent.putExtras(evaluatebundle);
 			startActivity(evaluateintent);
+			break;
+		case R.id.layout_4:
+			Intent scoreintent = new Intent();
+			scoreintent.setClass(SeminarDetailActivity.this, ScoreActivity.class);
+			Bundle scorebundle = new Bundle();
+			scorebundle.putInt("seId",seId);
+			scorebundle.putInt("cId",cId);
+			scorebundle.putString("seName",seName);
+			scoreintent.putExtras(scorebundle);
+			startActivity(scoreintent);
 			break;
 
 		default:

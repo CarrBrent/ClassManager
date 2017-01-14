@@ -54,14 +54,14 @@
                     android:layout_alignParentLeft="true"
                     android:duplicateParentState="true"
                     android:gravity="center_vertical"
-                    android:text="抢答结果： " />
+                    android:text="抢答结果：        " />
 
                 <TextView
                     android:id="@+id/result"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/tv_name"
+                    android:layout_toRightOf="@+id/tv_result"
                     android:gravity="center_vertical"
                     android:maxLength="20" />
             </RelativeLayout>
