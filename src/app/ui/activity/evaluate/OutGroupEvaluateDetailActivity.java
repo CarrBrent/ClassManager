@@ -29,27 +29,30 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import app.bean.Evaluation;
 import app.ui.TitleActivity;
+import app.ui.activity.barcode.SignInActivity;
+import app.ui.activity.myclass.SeminarDetailActivity;
 import app.util.BaseInfo;
 
-public class SelfEvaluateActivity extends TitleActivity implements OnClickListener{
+public class OutGroupEvaluateDetailActivity extends TitleActivity implements OnClickListener{
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	private int seId;
-	private int sId;
+	private int grNumber;
 	private int cId;
 	private String seName;
 	private String sName;
 //	private TextView tvSName; 
 //	private TextView tvSId; 
 	private Button submit; 
-	private String selfevaluatesubmit = "stuSelfEvaluationSubmit.do";
-	private String selfevaluatesubmiturl;
-	private String findselfevaluatekeys = "stufindSelfEvaluationKeys.do";
-	private String findselfevaluatekeysUrl;
+	private String outgroupevaluatesubmit = "stuOutGroupEvaluationSubmit.do";
+	private String outgroupevaluatesubmiturl;
+	private String findoutgroupevaluatekeys = "stufindOutGroupEvaluationKeys.do";
+	private String findoutgroupevaluatekeysUrl;
 	private ListView listView;
 
 	private HttpUtils http = new HttpUtils();
@@ -58,14 +61,14 @@ public class SelfEvaluateActivity extends TitleActivity implements OnClickListen
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_evaluate_outgroup_detail);
+		setContentView(R.layout.activity_evaluate_self);
 		showBackwardView(R.string.button_backward, true);
 
 		// 设置缓存1秒,1秒内直接返回上次成功请求的结果
 		http.configCurrentHttpCacheExpiry(1000);
 
 		baseInfo = (BaseInfo)getApplication();
-		selfevaluatesubmiturl = baseInfo.getUrl()+selfevaluatesubmit;
+		outgroupevaluatesubmiturl = baseInfo.getUrl()+outgroupevaluatesubmit;
 //		tvSName = (TextView) findViewById(R.id.sname);
 //		tvSId = (TextView) findViewById(R.id.sId);
 		submit = (Button) findViewById(R.id.submit);
@@ -74,7 +77,7 @@ public class SelfEvaluateActivity extends TitleActivity implements OnClickListen
 		Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();
 		seId = bundle.getInt("seId");
-		sId = bundle.getInt("sId");
+		grNumber = bundle.getInt("grNumber");
 		cId = bundle.getInt("cId");
 		seName = bundle.getString("seName");
 		sName = bundle.getString("sName");
@@ -85,11 +88,11 @@ public class SelfEvaluateActivity extends TitleActivity implements OnClickListen
 		//通过访问服务器，获取数据
 		RequestParams params = new RequestParams();
 		params.addQueryStringParameter("cid", Integer.toString(cId));
-		params.addQueryStringParameter("eename", "学生自评" );
+		params.addQueryStringParameter("eename", "组间评价" );
 		baseInfo = (BaseInfo)getApplication();
-		findselfevaluatekeysUrl = baseInfo.getUrl()+findselfevaluatekeys;
+		findoutgroupevaluatekeysUrl = baseInfo.getUrl()+findoutgroupevaluatekeys;
 		listView=(ListView)this.findViewById(R.id.listview); 
-		GetData(findselfevaluatekeysUrl, params);
+		GetData(findoutgroupevaluatekeysUrl, params);
 
 		submit.setOnClickListener(this);
 
@@ -131,7 +134,7 @@ public class SelfEvaluateActivity extends TitleActivity implements OnClickListen
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {				
 				List<Map<String, Object>> keys = getMaps("keys", responseInfo.result);
-				SpinnerAdapter spinnerAdapter = new SpinnerAdapter(SelfEvaluateActivity.this, keys, R.layout.activity_evaluate_outgroup_detail_items);
+				SpinnerAdapter spinnerAdapter = new SpinnerAdapter(OutGroupEvaluateDetailActivity.this, keys, R.layout.activity_evaluate_outgroup_detail_items);
 				listView.setAdapter(spinnerAdapter);
 			}
 			@Override
@@ -153,14 +156,14 @@ public class SelfEvaluateActivity extends TitleActivity implements OnClickListen
 		for (int i = 0; i < listView.getCount(); i++) {
 			adapter =(SpinnerAdapter)listView.getAdapter();
 			key =adapter.getItem(i);
-			evaluations.add(new Evaluation(seId,sId,(Integer)key.get("keyId"),(String)key.get("value")));
+			evaluations.add(new Evaluation(seId,grNumber,(Integer)key.get("keyId"),(String)key.get("value")));
 
 		}
 
-		params.addQueryStringParameter("selfevaluations",listToJson(evaluations));
+		params.addQueryStringParameter("outgroupevaluations",listToJson(evaluations));
 
 		http.send(HttpRequest.HttpMethod.GET,
-				selfevaluatesubmiturl,
+				outgroupevaluatesubmiturl,
 				params,
 				new RequestCallBack<String>() {
 
@@ -179,9 +182,9 @@ public class SelfEvaluateActivity extends TitleActivity implements OnClickListen
 					
 					String flag=((Integer)jsonObject.get("flag")).toString();
 					if (flag.equals("-1")) {
-						Toast.makeText(SelfEvaluateActivity.this, "评价失败", 1).show();
+						Toast.makeText(OutGroupEvaluateDetailActivity.this, "评价失败", 1).show();
 					}else {
-						Toast.makeText(SelfEvaluateActivity.this, "评价完成", 1).show();
+						Toast.makeText(OutGroupEvaluateDetailActivity.this, "评价完成", 1).show();
 						finish();
 					}
 					
@@ -209,7 +212,7 @@ public class SelfEvaluateActivity extends TitleActivity implements OnClickListen
 			jo.put("evalRank", evaluation.getEvalRank());
 			json.put(jo);
 		}
-		jsonObject.put("selfevaluations", json);
+		jsonObject.put("outgroupevaluations", json);
 		return jsonObject.toString();
 	}
 	

@@ -5,10 +5,10 @@ public class Evaluation {
 	int object;//student ID
 	int eeId;
 	String evalRank;
-	public Evaluation(int seId,int sId,int eeId,String evalRank){
+	public Evaluation(int seId,int object,int eeId,String evalRank){
 		this.setEeId(eeId);
 		this.setSeId(seId);
-		this.setObject(sId);
+		this.setObject(object);
 		this.setEvalRank(evalRank);
 		
 	}
