@@ -45,7 +45,7 @@ public class EvaluateActivity extends TitleActivity implements OnClickListener{
         switch (v.getId()) {
 		case R.id.layout_1:
 			Intent ingroupintent = new Intent();
-			ingroupintent.setClass(EvaluateActivity.this, AboutActivity.class);
+			ingroupintent.setClass(EvaluateActivity.this, InGroupEvaluateActivity.class);
 			Bundle ingroupbundle = new Bundle();
 			ingroupbundle.putInt("seId",seId);
 			ingroupbundle.putInt("cId",cId);
