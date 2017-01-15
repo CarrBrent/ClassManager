@@ -73,6 +73,11 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
+        <activity
+            android:name="app.ui.activity.exercises.ExerciseVoteActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
         <!-- 课堂评价-->
         <activity
             android:name="app.ui.activity.score.ScoreActivity"
