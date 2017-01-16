@@ -78,6 +78,11 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
+        <activity
+            android:name="app.ui.activity.exercises.ExerciseTimeLimitActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
         <!-- 查询成绩-->
         <activity
             android:name="app.ui.activity.score.ScoreActivity"
@@ -149,6 +154,11 @@
         </activity>
         <activity
             android:name="app.ui.activity.myclass.SelectedClassActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="app.ui.activity.myclass.CourseSelectActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>

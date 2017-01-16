@@ -47,7 +47,7 @@ public class MyClassDetailActivity extends TitleActivity implements OnClickListe
 			break;
 		case R.id.layout_2:
 			Intent intent = new Intent();
-			intent.setClass(MyClassDetailActivity.this, AboutActivity.class);
+			intent.setClass(MyClassDetailActivity.this, CourseSelectActivity.class);
 			Bundle bundle = new Bundle();
 			bundle.putInt("cId",cId);
 			bundle.putString("cName",cName);
