@@ -9,7 +9,7 @@
 
 
     <RadioButton
-        android:id="@+id/CName"
+        android:id="@+id/seName"
         style="@style/text_black_18"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
