@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -47,8 +48,6 @@ public class CourseSelectActivity extends TitleActivity implements OnClickListen
 	private BaseInfo baseInfo;
 	private ListView listView;
 	private Button submit;
-	private RadioGroup radioGroup;
-	private int selectedItemId;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -65,14 +64,6 @@ public class CourseSelectActivity extends TitleActivity implements OnClickListen
 		submit = (Button)this.findViewById(R.id.submit);
 		submit.setOnClickListener(this);
 
-		radioGroup = (RadioGroup)this.findViewById(R.id.mRadioGroup);
-
-		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() { @Override 
-			public void onCheckedChanged(RadioGroup group, int checkedId) { 
-			selectedItemId = checkedId;
-
-		}
-		});
 
 		// 设置缓存1秒,1秒内直接返回上次成功请求的结果
 		http.configCurrentHttpCacheExpiry(1000);
@@ -92,13 +83,13 @@ public class CourseSelectActivity extends TitleActivity implements OnClickListen
 		case R.id.submit:
 			submit();
 			if (current >= count-1) {
+				Toast.makeText(this, "选课完成", 0).show();
 				finish();
 			}else {
 				current++;
-				SimpleAdapter adapter = new SimpleAdapter(CourseSelectActivity.this,selectseminars.get(current),R.layout.activity_course_select_items,
-						new String[]{"seName"},
-						new int[]{R.id.seName});
+				CourseSelectAdapter adapter = new CourseSelectAdapter(CourseSelectActivity.this, getSeNames(selectseminars.get(current)));  
 				listView.setAdapter(adapter);
+				listView.setVisibility(View.VISIBLE);
 			}
 			break;
 		default:
@@ -113,35 +104,47 @@ public class CourseSelectActivity extends TitleActivity implements OnClickListen
 	private void submit(){
 		SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
 		String sId = sharedPreferences.getString("userId", "null");
-
-		String seId = Integer.toString((Integer)selectseminars.get(current).get(selectedItemId).get("seId"));
+		String seId = "";
+		// 根据RadioButton的选择情况确定用户名  
+		for (int i = 0, j = listView.getCount(); i < j; i++) {  
+			View child = listView.getChildAt(i);  
+			RadioButton rdoBtn = (RadioButton) child.findViewById(R.id.radio_btn);  
+			if (rdoBtn.isChecked())  
+				seId = Integer.toString((Integer)selectseminars.get(current).get(i).get("seId"));
+		} 
 		RequestParams submitParams = new RequestParams();
 		submitParams.addQueryStringParameter("cid", Integer.toString(cId));
 		submitParams.addQueryStringParameter("sid", sId);
 		submitParams.addQueryStringParameter("seid", seId);
+		if (seId=="") {
+			Toast.makeText(this, "请选择研讨课", 0).show();
+		}else {
+			http.send(HttpRequest.HttpMethod.GET,
+					baseInfo.getUrl()+submitString,
+					submitParams,
+					new RequestCallBack<String>() {
+
+				@Override
+				public void onStart() {
+				}
+
+				@Override
+				public void onLoading(long total, long current, boolean isUploading) {
+				}
+
+				@Override
+				public void onSuccess(ResponseInfo<String> responseInfo) {
+
+				}
+				@Override
+				public void onFailure(HttpException error, String msg) {
+				}
+			});
+
+		}
 
 
-		http.send(HttpRequest.HttpMethod.GET,
-				baseInfo.getUrl()+submitString,
-				submitParams,
-				new RequestCallBack<String>() {
 
-			@Override
-			public void onStart() {
-			}
-
-			@Override
-			public void onLoading(long total, long current, boolean isUploading) {
-			}
-
-			@Override
-			public void onSuccess(ResponseInfo<String> responseInfo) {
-
-			}
-			@Override
-			public void onFailure(HttpException error, String msg) {
-			}
-		});
 
 	}
 
@@ -171,11 +174,9 @@ public class CourseSelectActivity extends TitleActivity implements OnClickListen
 						seminars = getList(seminarsJsonArray.get(i).toString());
 						selectseminars.add(seminars);
 					}
-
-					SimpleAdapter adapter = new SimpleAdapter(CourseSelectActivity.this,selectseminars.get(0),R.layout.activity_course_select_items,
-							new String[]{"seName"},
-							new int[]{R.id.seName});
+					CourseSelectAdapter adapter = new CourseSelectAdapter(CourseSelectActivity.this, getSeNames(selectseminars.get(0)));  
 					listView.setAdapter(adapter);
+					listView.setVisibility(View.VISIBLE);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -190,7 +191,13 @@ public class CourseSelectActivity extends TitleActivity implements OnClickListen
 
 	}
 
-
+	public List<String> getSeNames(List<Map<String, Object>> seminars) {
+		List<String> seNames = new ArrayList<String>();
+		for (int i = 0; i < seminars.size(); i++) {
+			seNames.add(seminars.get(i).get("seName").toString());
+		}
+		return seNames;
+	}
 
 	public static List<Map<String, Object>> getList(String jsonString) {  
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();  
