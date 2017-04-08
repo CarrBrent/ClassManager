@@ -6,86 +6,73 @@
     android:background="@color/background"
     android:orientation="vertical"
     android:padding="@dimen/content_padding" >
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="20dp" >
 
             <TextView
                 android:id="@+id/tv_title"
+                style="@style/text_black_22"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content" />
 
             <RadioGroup
                 android:id="@+id/mRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp" >
 
-
-                <!--四个选项-->
+                <!-- 四个选项 -->
 
                 <RadioButton
                     android:id="@+id/RadioA"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-
-                <RadioButton
-                    android:id="@+id/RadioD"
+                    style="@style/text_black_18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <RadioButton
                     android:id="@+id/RadioB"
+                    style="@style/text_black_18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <RadioButton
                     android:id="@+id/RadioC"
+                    style="@style/text_black_18"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
+                    android:layout_height="wrap_content" />
 
-
+                <RadioButton
+                    android:id="@+id/RadioD"
+                    style="@style/text_black_18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </RadioGroup>
-
         </LinearLayout>
-
-
     </ScrollView>
 
-    <!--切换题目-->
+    <!-- 切换题目 -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:orientation="horizontal">
-
+        android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/btn_up"
+            android:id="@+id/submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="上一题" />
-
-        <Button
-            android:id="@+id/btn_down"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="下一题" />
-
+            android:text="提交" />
     </LinearLayout>
-
 
 </LinearLayout>

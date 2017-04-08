@@ -13,6 +13,7 @@ public class ExerciseActivity extends TitleActivity implements OnClickListener{
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
 	private int seId;
+	private int cId;
 	private String seName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class ExerciseActivity extends TitleActivity implements OnClickListener{
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         seId = bundle.getInt("seId");
+        cId = bundle.getInt("cId");
         seName = bundle.getString("seName");
         setTitle(seName);
         //为控件添加监听器
@@ -38,9 +40,10 @@ public class ExerciseActivity extends TitleActivity implements OnClickListener{
         switch (v.getId()) {
 		case R.id.layout_1:
 			Intent ingroupintent = new Intent();
-			ingroupintent.setClass(ExerciseActivity.this, AboutActivity.class);
+			ingroupintent.setClass(ExerciseActivity.this, ExerciseTimeLimitActivityStart.class);
 			Bundle ingroupbundle = new Bundle();
 			ingroupbundle.putInt("seId",seId);
+			ingroupbundle.putInt("cId",cId);
 			ingroupbundle.putString("seName",seName);
 			ingroupintent.putExtras(ingroupbundle);
 			startActivity(ingroupintent);

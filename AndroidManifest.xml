@@ -79,6 +79,11 @@
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
+            android:name="app.ui.activity.exercises.ExerciseTimeLimitActivityStart"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
             android:name="app.ui.activity.exercises.ExerciseTimeLimitActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
