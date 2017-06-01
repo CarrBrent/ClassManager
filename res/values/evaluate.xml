@@ -13,5 +13,11 @@
         <item>C</item>  
         <item>D</item>          
     </string-array> 
+     <string-array name="course_names">  
+        <item>大学计算机</item>  
+        <item>数据库系统</item>          
+        <item>数据结构</item>  
+        <item>程序设计基础</item>          
+    </string-array> 
     
 </resources>

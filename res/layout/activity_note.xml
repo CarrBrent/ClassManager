@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_CONTENT"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="@dimen/content_padding" >
+
+    <LinearLayout
+        android:id="@+id/note1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/table_margin"
+        android:background="@color/table_background"
+        android:orientation="vertical"
+        android:padding="@dimen/table_padding" >
+
+        <RelativeLayout
+            android:id="@+id/layout_course"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:background="@drawable/row_selector"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <TextView
+                android:id="@+id/tv_course"
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical"
+                android:text="课程 ：" />
+
+            <Spinner
+                android:id="@+id/spinnerCourse"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_toRightOf="@+id/tv_course"
+                android:entries="@array/course_names"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:background="@drawable/row_selector"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical"
+                android:text="标题 ：" />
+            <EditText
+                android:id="@+id/et_Title"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_toRightOf="@+id/tv_title"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/note6"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:layout_marginTop="@dimen/row_margin"
+            android:background="@drawable/row_selector"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <EditText
+                style="@style/text_black_18"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="start" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

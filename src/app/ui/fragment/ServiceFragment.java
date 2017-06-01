@@ -25,6 +25,7 @@ import app.ui.activity.barcode.SignInActivity;
 import app.ui.activity.exercises.ExerciseErrorNoteActivity;
 import app.ui.activity.myclass.MyClassActivity;
 import app.ui.activity.myclass.httptestActivity;
+import app.ui.activity.note.NoteActivity;
 import app.ui.activity.setting.AboutActivity;
 import app.ui.adapter.ViewPaperAdapter;
 
@@ -47,7 +48,7 @@ public class ServiceFragment extends BaseFragment implements Runnable{
 				startActivity(new Intent(getActivity(), SignInActivity.class));
 				break;
 			case R.id.layout_2:
-				startActivity(new Intent(getActivity(), SignInActivity.class));
+				startActivity(new Intent(getActivity(), NoteActivity.class));
 				break;
 			case R.id.layout_3:
 				startActivity(new Intent(getActivity(), MyClassActivity.class));
