@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import app.ui.BaseFragment;
 import app.ui.activity.barcode.BarCodeActivity;
 import app.ui.activity.barcode.SignInActivity;
+import app.ui.activity.exercises.ExerciseErrorNoteActivity;
 import app.ui.activity.myclass.MyClassActivity;
 import app.ui.activity.myclass.httptestActivity;
 import app.ui.activity.setting.AboutActivity;
@@ -45,8 +46,14 @@ public class ServiceFragment extends BaseFragment implements Runnable{
 			case R.id.layout_1:
 				startActivity(new Intent(getActivity(), SignInActivity.class));
 				break;
+			case R.id.layout_2:
+				startActivity(new Intent(getActivity(), SignInActivity.class));
+				break;
 			case R.id.layout_3:
 				startActivity(new Intent(getActivity(), MyClassActivity.class));
+				break;
+			case R.id.layout_4:
+				startActivity(new Intent(getActivity(), ExerciseErrorNoteActivity.class));
 				break;
 			default:
 				break;
@@ -78,7 +85,9 @@ public class ServiceFragment extends BaseFragment implements Runnable{
 		
 		//将设置好的onClickListener关联到相应的layout
 		view.findViewById(R.id.layout_1).setOnClickListener(onClickListener);
+		view.findViewById(R.id.layout_2).setOnClickListener(onClickListener);
 		view.findViewById(R.id.layout_3).setOnClickListener(onClickListener);
+		view.findViewById(R.id.layout_4).setOnClickListener(onClickListener);
 		//guidepage
 		mViewPager = (ViewPager)view.findViewById(R.id.viewpager);
 		group = (ViewGroup)view.findViewById(R.id.viewGroup);
