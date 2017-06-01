@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_CONTENT"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="@dimen/content_padding" >
+
+    <LinearLayout
+        android:id="@+id/note1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/table_margin"
+        android:background="@color/table_background"
+        android:orientation="vertical"
+        android:padding="@dimen/table_padding" >
+
+        <RelativeLayout
+            android:id="@+id/layout_official_website"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:background="@drawable/row_selector"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <TextView
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical"
+                android:text="1.E-mail邮件本质是"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/note2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:layout_marginTop="@dimen/row_margin"
+            android:background="@drawable/row_selector"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <TextView
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical"
+                android:text="2.网络的什么成为拓扑结构"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/note3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:layout_marginTop="@dimen/row_margin"
+            android:background="@drawable/row_selector"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <TextView
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical"
+                android:text="3.世界上最早出现的计算机互联网络是"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/note4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:layout_marginTop="@dimen/row_margin"
+            android:background="@drawable/row_selector"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <TextView
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical"
+                android:text="4.下列数据模型中，数据独立性最高的是"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/note5"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:background="@drawable/row_selector"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <TextView
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical"
+                android:text="5.在IP协议中用来进行组播的IP地址是哪类地址"/>
+
+        </RelativeLayout>
+        
+       <RelativeLayout
+            android:id="@+id/note6"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:layout_marginTop="@dimen/row_margin"
+            android:background="@drawable/row_selector"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <TextView
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical"
+                android:text="6.目前，网络传输介质中传输速率最高的是"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

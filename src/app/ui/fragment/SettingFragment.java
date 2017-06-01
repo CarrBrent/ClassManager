@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import app.ui.BaseFragment;
 import app.ui.activity.barcode.BarCodeActivity;
+import app.ui.activity.exercises.ExerciseErrorNoteActivity;
 import app.ui.activity.myclass.MyClassActivity;
 import app.ui.activity.myclass.httptestActivity;
 import app.ui.activity.setting.AboutActivity;
@@ -38,6 +39,9 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 			break;
 		case R.id.layout_privacy:
 			startActivity(new Intent(getActivity(), BarCodeActivity.class));
+			break;
+		case R.id.layout_errornote:
+			startActivity(new Intent(getActivity(), ExerciseErrorNoteActivity.class));
 			break;
 		case R.id.layout_exit:
 			SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
@@ -67,6 +71,7 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 		view.findViewById(R.id.layout_notification).setOnClickListener(this);
 		view.findViewById(R.id.layout_privacy).setOnClickListener(this);
 		view.findViewById(R.id.layout_exit).setOnClickListener(this);
+		view.findViewById(R.id.layout_errornote).setOnClickListener(this);
 	}
 
 }
