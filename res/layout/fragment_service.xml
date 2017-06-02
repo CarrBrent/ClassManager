@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#12a3d5"
+                android:background="@drawable/blockshape"
                 android:padding="20dp" >
 
                 <TextView
@@ -64,7 +64,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:background="#12a3d5"
+                android:background="@drawable/blockshape"
                 android:padding="10dp" >
 
                <TextView
@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#12a3d5"
+                android:background="@drawable/blockshape"
                 android:padding="20dp" >
 
                 <TextView
@@ -108,7 +108,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:background="#12a3d5"
+                android:background="@drawable/blockshape"
                 android:padding="10dp" >
 
                <TextView

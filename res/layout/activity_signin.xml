@@ -25,7 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/row_height"
                 android:gravity="center_vertical|center"
-                android:background="@color/button_background"
+                android:background="@drawable/shape"
+                android:textColor="@android:color/white"
            		android:text="@string/text_signin"
                 />
         </LinearLayout>

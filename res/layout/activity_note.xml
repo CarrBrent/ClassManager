@@ -20,6 +20,7 @@
             android:id="@+id/layout_course"
             android:layout_width="match_parent"
             android:layout_height="@dimen/row_height"
+            android:layout_weight="1"
             android:background="@drawable/row_selector"
             android:clickable="true"
             android:onClick="onClick"
@@ -40,13 +41,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:layout_toRightOf="@+id/tv_course"
-                android:entries="@array/course_names"/>
+                android:entries="@array/course_names" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/layout_title"
             android:layout_width="match_parent"
             android:layout_height="@dimen/row_height"
+            android:layout_weight="1"
             android:background="@drawable/row_selector"
             android:clickable="true"
             android:onClick="onClick"
@@ -61,19 +63,18 @@
                 android:duplicateParentState="true"
                 android:gravity="center_vertical"
                 android:text="标题 ：" />
+
             <EditText
                 android:id="@+id/et_Title"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                android:layout_toRightOf="@+id/tv_title"/>
+                android:layout_toRightOf="@+id/tv_title" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/note6"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginBottom="@dimen/row_margin"
-            android:layout_marginTop="@dimen/row_margin"
+            android:layout_height="460dp"
             android:background="@drawable/row_selector"
             android:clickable="true"
             android:onClick="onClick"
@@ -86,6 +87,48 @@
                 android:layout_height="match_parent"
                 android:duplicateParentState="true"
                 android:gravity="start" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:layout_weight="1"
+            android:background="@drawable/row_selector"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/roundButton1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/default_button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text=" 取消 "
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/roundButton2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/default_button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text=" 确定 "
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 
