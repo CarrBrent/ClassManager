@@ -52,7 +52,7 @@
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a90"
+                    android:drawableBottom="@drawable/a001"
                     android:drawablePadding="30dp"
                     android:gravity="center_horizontal"
                     android:text="课程签到" />
@@ -71,7 +71,7 @@
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a90"
+                    android:drawableBottom="@drawable/a002"
                     android:drawablePadding="30dp"
                     android:gravity="center_horizontal"
                     android:text="我的笔记" />
@@ -97,7 +97,7 @@
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a90"
+                    android:drawableBottom="@drawable/a003"
                     android:drawablePadding="30dp"
                     android:gravity="center_horizontal"
                     android:text="我的课程" />
@@ -115,7 +115,7 @@
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a90"
+                    android:drawableBottom="@drawable/a004"
                     android:drawablePadding="30dp"
                     android:gravity="center_horizontal"
                     android:text="错题本" />
