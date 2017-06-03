@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/layout_answer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/row_height"
+        android:layout_weight="1"
+        android:background="@drawable/row_selector"
+        android:paddingLeft="@dimen/row_padding_left"
+        android:paddingRight="@dimen/row_padding_right" >
+
+        <TextView
+            android:id="@+id/tv_vote_answer"
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:duplicateParentState="true"
+            android:gravity="center_vertical" 
+            android:text=" 知识点   ：  "/>
+
+        <Spinner
+            android:id="@+id/vote_answer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_edittext_height"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/tv_vote_answer"
+            android:entries="@array/keynote" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="8"
+        android:background="@drawable/row_selector"
+        android:paddingLeft="@dimen/row_padding_left"
+        android:paddingRight="@dimen/row_padding_right" >
+
+        <lecho.lib.hellocharts.view.ColumnChartView
+            android:id="@+id/column"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+    
+</LinearLayout>

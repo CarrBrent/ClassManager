@@ -19,5 +19,11 @@
         <item>数据结构</item>  
         <item>程序设计基础</item>          
     </string-array> 
+    <string-array name="keynote">  
+        <item>数据库索引</item>  
+        <item>SQL基础</item>          
+        <item>数据存储原理</item>  
+        <item>SQL优化</item>          
+    </string-array> 
     
 </resources>
