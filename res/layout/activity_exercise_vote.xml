@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="100dp"
         android:orientation="horizontal" >
 
         <LinearLayout
@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:background="#12a3d5" >
+                android:background="@drawable/blockshape" >
 
                 <TextView
                     style="@style/text_white_bold_22"
@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:drawablePadding="30dp"
                     android:gravity="center_horizontal"
-                    android:textSize="80px"
+                    android:textSize="180px"
                     android:text="A" />
             </RelativeLayout>
 
@@ -42,7 +42,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="10"
-                android:background="#12a3d5" >
+                android:background="@drawable/blockshape" >
 
                 <TextView
                      android:drawablePadding="10dp"
@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:textSize="80px"
+                    android:textSize="180px"
                     android:text="C" />
             </RelativeLayout>
         </LinearLayout>
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:background="#12a3d5" >
+                android:background="@drawable/blockshape" >
 
                 <TextView
                     style="@style/text_white_bold_22"
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:drawablePadding="30dp"
                     android:gravity="center_horizontal"
-                    android:textSize="80px"
+                    android:textSize="180px"
                     android:text="B" />
             </RelativeLayout>
 
@@ -86,7 +86,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="10"
-                android:background="#12a3d5" >
+                android:background="@drawable/blockshape" >
 
                 <TextView
                     android:drawablePadding="10dp"
@@ -94,7 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:textSize="80px"
+                    android:textSize="180px"
                     android:text="D" />
             </RelativeLayout>
         </LinearLayout>

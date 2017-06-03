@@ -23,14 +23,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:background="#12a3d5" >
+                android:background="@drawable/blockshape" >
 
                 <TextView
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="30dp"
-                    android:drawableBottom="@drawable/a90"
+                    android:drawableBottom="@drawable/class1"
                     android:gravity="center_horizontal"
                     android:text="我的研讨课" />
             </RelativeLayout>
@@ -48,14 +48,14 @@
                 android:padding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#12a3d5" >
+                android:background="@drawable/blockshape" >
 
                 <TextView
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="30dp"
-                    android:drawableBottom="@drawable/a90"
+                    android:drawableBottom="@drawable/class2"
                     android:gravity="center_horizontal"
                     android:text="选课" />
             </RelativeLayout>
