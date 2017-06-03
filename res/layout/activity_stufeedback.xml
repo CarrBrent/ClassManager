@@ -1,0 +1,205 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/layout_keynote1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/row_height"
+        android:background="@drawable/row_selector"
+        android:paddingLeft="@dimen/row_padding_left"
+        android:paddingRight="@dimen/row_padding_right" >
+
+        <TextView
+            android:id="@+id/tv_keynote1"
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:duplicateParentState="true"
+            android:gravity="center_vertical" 
+            android:text="什么是自动计算？"/>
+
+        <Spinner
+            android:id="@+id/keynote_feedback1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_edittext_height"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/tv_keynote1"
+            android:entries="@array/feedback" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_keynote2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/row_height"
+        android:background="@drawable/row_selector"
+        android:paddingLeft="@dimen/row_padding_left"
+        android:paddingRight="@dimen/row_padding_right" >
+
+        <TextView
+            android:id="@+id/tv_keynote2"
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:duplicateParentState="true"
+            android:gravity="center_vertical" 
+            android:text="什么是表示-存储-执行？ "/>
+
+        <Spinner
+            android:id="@+id/keynote_feedback2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_edittext_height"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/tv_keynote2"
+            android:entries="@array/feedback" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_keynote3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/row_height"
+        android:background="@drawable/row_selector"
+        android:paddingLeft="@dimen/row_padding_left"
+        android:paddingRight="@dimen/row_padding_right" >
+
+        <TextView
+            android:id="@+id/tv_keynote3"
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:duplicateParentState="true"
+            android:gravity="center_vertical" 
+            android:text="计算系统的几部分 "/>
+
+        <Spinner
+            android:id="@+id/keynote_feedback3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_edittext_height"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/tv_keynote3"
+            android:entries="@array/feedback" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_keynote4"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/row_height"
+        android:background="@drawable/row_selector"
+        android:paddingLeft="@dimen/row_padding_left"
+        android:paddingRight="@dimen/row_padding_right" >
+
+        <TextView
+            android:id="@+id/tv_keynote4"
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:duplicateParentState="true"
+            android:gravity="center_vertical" 
+            android:text="什么是计算思维？"/>
+
+        <Spinner
+            android:id="@+id/keynote_feedback4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_edittext_height"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/tv_keynote4"
+            android:entries="@array/feedback" />
+    </RelativeLayout>
+     <RelativeLayout
+        android:id="@+id/layout_keynote5"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/row_height"
+        android:background="@drawable/row_selector"
+        android:paddingLeft="@dimen/row_padding_left"
+        android:paddingRight="@dimen/row_padding_right" >
+
+        <TextView
+            android:id="@+id/tv_keynote5"
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:duplicateParentState="true"
+            android:gravity="center_vertical" 
+            android:text="计算思维教育空间"/>
+
+        <Spinner
+            android:id="@+id/keynote_feedback5"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_edittext_height"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/tv_keynote5"
+            android:entries="@array/feedback" />
+    </RelativeLayout>
+     <RelativeLayout
+        android:id="@+id/layout_keynote6"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/row_height"
+        android:background="@drawable/row_selector"
+        android:paddingLeft="@dimen/row_padding_left"
+        android:paddingRight="@dimen/row_padding_right" >
+
+        <TextView
+            android:id="@+id/tv_keynote6"
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:duplicateParentState="true"
+            android:gravity="center_vertical" 
+            android:text="计算系统发展趋势"/>
+
+        <Spinner
+            android:id="@+id/keynote_feedback6"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_edittext_height"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/tv_keynote6"
+            android:entries="@array/feedback" />
+    </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/layout_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:background="@drawable/row_selector"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/roundButton1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/default_button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text=" 取消 "
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/roundButton2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/default_button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text=" 确定 "
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </RelativeLayout>    
+
+    
+</LinearLayout>

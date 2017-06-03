@@ -19,6 +19,7 @@ import app.ui.activity.myclass.MyClassActivity;
 import app.ui.activity.myclass.httptestActivity;
 import app.ui.activity.note.FeedBackActivity;
 import app.ui.activity.note.KeyNoteActivity;
+import app.ui.activity.note.StuFeedBackActivity;
 import app.ui.activity.setting.AboutActivity;
 import app.ui.activity.setting.LoginActivity;
 
@@ -52,6 +53,9 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 		case R.id.layout_feedback:
 			startActivity(new Intent(getActivity(), FeedBackActivity.class));
 			break;
+		case R.id.layout_stufeedback:
+			startActivity(new Intent(getActivity(), StuFeedBackActivity.class));
+			break;
 		case R.id.layout_exit:
 			SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
 			Editor editor = sharedPreferences.edit();//获取编辑器
@@ -83,6 +87,7 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 		view.findViewById(R.id.layout_errornote).setOnClickListener(this);
 		view.findViewById(R.id.layout_keynote).setOnClickListener(this);
 		view.findViewById(R.id.layout_feedback).setOnClickListener(this);
+		view.findViewById(R.id.layout_stufeedback).setOnClickListener(this);
 	}
 
 }

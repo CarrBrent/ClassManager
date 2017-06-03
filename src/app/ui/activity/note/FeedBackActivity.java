@@ -43,7 +43,7 @@ public class FeedBackActivity extends TitleActivity {
 		mColumnChartView.setOnValueTouchListener(new ValueTouchListener());
 		
         Random random = new Random();
-        generateDefaultData(random.nextInt(10),random.nextInt(10)+5,random.nextInt(10)+8,random.nextInt(10));
+        generateDefaultData(random.nextInt(5),random.nextInt(5)+3,random.nextInt(10)+8,random.nextInt(5)+5);
     }
 
 

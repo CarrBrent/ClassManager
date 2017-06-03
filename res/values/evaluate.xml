@@ -20,10 +20,18 @@
         <item>程序设计基础</item>          
     </string-array> 
     <string-array name="keynote">  
-        <item>数据库索引</item>  
-        <item>SQL基础</item>          
-        <item>数据存储原理</item>  
-        <item>SQL优化</item>          
+        <item>什么是自动计算？</item>  
+        <item>什么是表示-存储-执行？</item>          
+        <item>计算系统的几部分 </item>  
+        <item>什么是计算思维？</item>  
+        <item>计算思维教育空间</item>
+        <item>计算系统发展趋势</item>        
+    </string-array> 
+    <string-array name="feedback">  
+        <item>非常难</item>  
+        <item>中等难度</item>          
+        <item>一般难度</item>  
+        <item>容易</item>          
     </string-array> 
     
 </resources>

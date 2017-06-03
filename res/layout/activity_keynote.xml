@@ -29,7 +29,7 @@
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a001"
+                    android:drawableBottom="@drawable/keynote1"
                     android:drawablePadding="30dp"
                     android:gravity="center_horizontal"
                     android:text="发送知识点" />
@@ -57,7 +57,7 @@
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a003"
+                    android:drawableBottom="@drawable/keynote2"
                     android:drawablePadding="30dp"
                     android:gravity="center_horizontal"
                     android:text="查看反馈" />
