@@ -139,6 +139,34 @@
                     android:gravity="center_vertical"
                     android:src="@drawable/go" />
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/layout_keynote"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_height"
+                android:layout_marginBottom="@dimen/row_margin"
+                android:layout_marginTop="@dimen/row_margin"
+                android:background="@drawable/row_selector"
+                android:paddingLeft="@dimen/row_padding_left"
+                android:paddingRight="@dimen/row_padding_right" >
+
+                <TextView
+                    style="@style/text_black_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/ic_setting_privacy"
+                    android:drawablePadding="4dp"
+                    android:duplicateParentState="true"
+                    android:gravity="center_vertical"
+                    android:text="知识点管理" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:duplicateParentState="true"
+                    android:gravity="center_vertical"
+                    android:src="@drawable/go" />
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/layout_general"
