@@ -1,5 +1,7 @@
 package app.ui.activity.score;
 
+import java.math.BigDecimal;
+
 import myclass.manager.R;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -190,11 +192,15 @@ public class CreditScoreView extends View {
      * @param canvas 画布
      */
     private void drawScore(Canvas canvas) {
-        int score = 0;
+        double score = 0;
         //计算总分
-        for (int i = 0; i < dataCount; i++) {
-            score += data[i];
-        }
+//        for (int i = 0; i < dataCount; i++) {
+//            score += data[i];
+//        }
+        //重新计算总分
+        score = (data[0]*0.071+data[1]*0.438+data[2]*0.292+data[3]*0.199)*0.8+data[4]*0.2;
+        BigDecimal   b   =   new   BigDecimal(score);  
+        score   =   b.setScale(1,   BigDecimal.ROUND_HALF_UP).doubleValue();  
         canvas.drawText(score + "", centerX, centerY + scoreSize / 2, scorePaint);
     }
 

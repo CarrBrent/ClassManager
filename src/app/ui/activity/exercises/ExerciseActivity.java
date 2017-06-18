@@ -29,9 +29,21 @@ public class ExerciseActivity extends TitleActivity implements OnClickListener{
         seName = bundle.getString("seName");
         setTitle(seName);
         //为控件添加监听器
-        findViewById(R.id.layout_1).setOnClickListener(this);
+        findViewById(R.id.layout_1).setOnClickListener(this);        
         findViewById(R.id.layout_2).setOnClickListener(this);
+        
+        
+        
         findViewById(R.id.layout_3).setOnClickListener(this);
+        //findViewById(R.id.layout_3).setVisibility(View.GONE);  
+        /**
+         * 不可见、不占空间
+         * findViewById(R.id.layout_3).setVisibility(View.GONE); 
+         * 可见、占空间
+         * findViewById(R.id.layout_3).setVisibility(View.VISIBLE); 
+         * 不可见、占空间
+         * findViewById(R.id.layout_3).setVisibility(View.INVISIBLE); 
+         */
         
     }
     @Override
